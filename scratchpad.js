@@ -1,9 +1,31 @@
-var div = document.createElement('div')
+var fib = function fibHelper(number) {
+ 
+  var returnNumber;
 
-var p = document.createElement('p')
+  if(number <= 0){
+    returnNumber = 0;
+  } else if (number === 1){
+    returnNumber = 1;  
+  } else {
+    returnNumber = fibHelper(number-1) + fibHelper(number-2)
+  }
+  
+  return returnNumber;
+  
+};
 
-div.appendChild(p)
-
-p.textContent = "I am Text"
-
-document.querySelector('body').appendChild(div)
+var pell = function pellHelper(number) {
+  
+  var returnNumber;
+  
+  if(number <= 0){
+    returnNumber = 0;
+  } else if (number === 1) {
+    returnNumber = 1;
+  } else {
+    returnNumber = (2 * pell(number-1) + pell(number-2));
+  }
+  
+    return returnNumber;
+                    
+};
