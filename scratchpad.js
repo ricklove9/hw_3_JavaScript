@@ -1,49 +1,24 @@
-function fibHelper(number) {
+var title = document.querySelector('title');
+title.textContent = "All Javascript";
+document.querySelector('head').appendChild(title)
+
+var fib = function fibHelper(number) {
  
   var returnNumber;
-  var div = document.createElement('div');
-  div.setAttribute("class", "fib")
-
+  
+  
+  
   if(number <= 0){
     returnNumber = 0;
-    
-    var p = document.createElement('p');
-    p.textContent = 'Fib(' + number + ') = ' + returnNumber;
-    
   } else if (number === 1){
-    returnNumber = 1; 
-
-    var p = document.createElement('p');
-    p.textContent = 'Fib(' + number + ') = ' + returnNumber;
-    
+    returnNumber = 1;  
   } else {
-      var left = fibHelper(number-1)
-      var clas = left.html.setAttribute("class");
-      left.html.setAttribute("class", clas + " fib-left");
-      
-      var right = fibHelper(number-2);
-      var clas = right.html.getAttribute("class");
-      right.html.setAttribute("class", clas + " fib-right");
-      
-    returnNumber = left.returnNumber + right.returnNumber;
-    
-    var p = document.createElement('p');
-		p.textContent = 'Fib(' + number + ') = ' + returnNumber;
-		div.appendChild(p);
-
-        div.appendChild(left.html)
-        div.appendChild(right.html);
+    returnNumber = fib(number-1) + fib(number-2)
   }
   
-  return {'returnNumber': returnNumber, 'html': div};
+  return returnNumber;
   
-}
-
-var fib = function (number, node) {
-    var tree = fibHelper(number)
-            node.appendChild(tree.html);
-        node.setAttribute("id", "fib");
-}
+};
 
 var pell = function pellHelper(number) {
   
@@ -59,7 +34,7 @@ var pell = function pellHelper(number) {
   
     return returnNumber;
                     
-};
+}
 
 var tri = function triHelper(number){
   
@@ -75,4 +50,8 @@ var tri = function triHelper(number){
   
   return returnNumber;
   
-};
+}
+
+console.log(fib(11));
+console.log(pell(11));
+console.log(tri(11));
