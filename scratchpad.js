@@ -6,8 +6,6 @@ var fib = function fibHelper(number) {
  
   var returnNumber;
   
-  
-  
   if(number <= 0){
     returnNumber = 0;
   } else if (number === 1){
@@ -51,6 +49,22 @@ var tri = function triHelper(number){
   return returnNumber;
   
 }
+
+function addHyperlink(hyperLink, name){
+  var a = document.createElement('a');
+  a.textContent = name;
+  a.href = hyperLink;
+  document.body.appendChild(a);
+}
+
+var empty = document.createElement('p')
+var empty2 = document.createElement('p')
+
+addHyperlink('https://oeis.org/A000045', 'More about Fibonnaci Numbers');
+document.body.appendChild(empty);
+addHyperlink('https://oeis.org/A000129', 'More about Pell Numbers');
+document.body.appendChild(empty2);
+addHyperlink('https://oeis.org/A000073', 'More about Tribonnaci Numbers');
 
 console.log(fib(11));
 console.log(pell(11));
