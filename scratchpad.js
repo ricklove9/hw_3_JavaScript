@@ -1,18 +1,49 @@
-var fib = function fibHelper(number) {
+function fibHelper(number) {
  
   var returnNumber;
+  var div = document.createElement('div');
+  div.setAttribute("class", "fib")
 
   if(number <= 0){
     returnNumber = 0;
+    
+    var p = document.createElement('p');
+    p.textContent = 'Fib(' + number + ') = ' + returnNumber;
+    
   } else if (number === 1){
-    returnNumber = 1;  
+    returnNumber = 1; 
+
+    var p = document.createElement('p');
+    p.textContent = 'Fib(' + number + ') = ' + returnNumber;
+    
   } else {
-    returnNumber = fibHelper(number-1) + fibHelper(number-2)
+      var left = fibHelper(number-1)
+      var clas = left.html.setAttribute("class");
+      left.html.setAttribute("class", clas + " fib-left");
+      
+      var right = fibHelper(number-2);
+      var clas = right.html.getAttribute("class");
+      right.html.setAttribute("class", clas + " fib-right");
+      
+    returnNumber = left.returnNumber + right.returnNumber;
+    
+    var p = document.createElement('p');
+		p.textContent = 'Fib(' + number + ') = ' + returnNumber;
+		div.appendChild(p);
+
+        div.appendChild(left.html)
+        div.appendChild(right.html);
   }
   
-  return returnNumber;
+  return {'returnNumber': returnNumber, 'html': div};
   
-};
+}
+
+var fib = function (number, node) {
+    var tree = fibHelper(number)
+            node.appendChild(tree.html);
+        node.setAttribute("id", "fib");
+}
 
 var pell = function pellHelper(number) {
   
